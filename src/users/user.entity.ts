@@ -1,6 +1,6 @@
 
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { Address } from 'src/address/address.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+import { Address } from '../address/address.entity';
 
 //Esse formato é utilizado para facilitar na comunicação com o banco de dados
 @Entity('users')
@@ -20,6 +20,11 @@ export class User {
   @Column({ unique: true })
   public cpf: string;
 
+  @OneToOne(() => Address, {
+    nullable: true,
+    cascade: true,
+  })
+  @JoinColumn()
   public address: Address;
 
   constructor(
@@ -28,13 +33,14 @@ export class User {
     password: string,
     cpf: string,
     id?: string,
-    address?: Address,
   ) {
     this.name = name;
     this.email = email;
     this.password = password;
     this.cpf = cpf;
-    this.id = id;
-    this.address = address;
+
+    if (!id) {
+      this.id = id;
+    }
   }
 }

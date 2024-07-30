@@ -51,6 +51,7 @@ export class UserService {
     UserValidator.checkCpfAlreadyInUse(this.users, cpf);
     UserValidator.verifyCpf(cpf);
 
+    //Utiliza-se os métodos em outros métodos para a ação ficar completa
     const user = await this.getUserById(id);
 
     if (user) {

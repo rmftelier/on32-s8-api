@@ -38,6 +38,7 @@ export class Address {
     this.city = city;
     this.state = state;
 
+    //Verifica-se pois eles não são obrigatórios na criação de um objeto address
     if (complement) {
       this.complement = complement;
     }
