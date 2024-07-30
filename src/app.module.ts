@@ -10,7 +10,7 @@ import { Address } from './address/address.entity';
     host: 'localhost',
     port: 5432,
     database: 'users',
-    username: 'postgress',
+    username: 'postgres',
     password: '030602',
     entities: [User, Address],
     synchronize: true,
